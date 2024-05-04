@@ -1,7 +1,5 @@
 name: Test
-
 on: [pull_request, workflow_dispatch]
-
 jobs:
   test:
     container: ubuntu:latest
@@ -9,10 +7,5 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Setup GCC
-      uses: egor-tensin/setup-gcc@v1
-      with:
-        version: latest
-        platform: x64
     - name: Install test dependencies
-      run: apt-get update && apt-get install -y check
+      run: apt-get update && apt-get install -y build-essential check
