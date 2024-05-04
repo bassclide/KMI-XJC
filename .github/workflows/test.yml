@@ -1,0 +1,18 @@
+name: Test
+
+on: [pull_request]
+
+jobs:
+  test:
+    container: ubuntu:latest
+    runs-on: ubuntu:latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Setup GCC
+      uses: egor-tensin/setup-gcc@v1
+      with:
+        version: latest
+        platform: x64
+    - name: Install test dependencies
+      run: apt-get update && apt-get install -y check
